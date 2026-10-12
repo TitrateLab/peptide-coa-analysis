@@ -264,6 +264,7 @@ def _mpl():
         "font.family": "sans-serif",
         "font.sans-serif": ["Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"],
         "svg.fonttype": "none",
+        "svg.hashsalt": "titratelab/peptide-coa-analysis",  # deterministic element ids
         "axes.unicode_minus": False,
     })
     return plt

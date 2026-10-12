@@ -11,3 +11,10 @@ First public release. Built from projection `20261012T021040Z`, records observed
 - 26 named laboratories; 19 folded into "Other labs".
 - Tables: compounds, compound by month, laboratories, laboratory by month, months. Minimum cell size 10.
 - Schema version 2. The compound table keeps the shape of the file served at titratelab.com/data; the month and laboratory tables are new in this release.
+
+Headline figures in this release:
+
+- 49.9% of 68,267 quantity results are within 10% of the printed label.
+- 12.9% of included reports carry an endotoxin result.
+- 0.77% of purity results are reported at zero (compound not identified).
+- 98.4% of included reports carry a laboratory verification URL.

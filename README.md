@@ -41,6 +41,16 @@ Sources by category: community and buyer submissions 2,917; independent lab pane
 | 5 | [How fast is public testing growing?](analysis/05-testing-volume-by-month.md) | 79,217 reports in the last 12 full months, +605.5% on the 12 before; collection coverage grew over the period, so this overstates market growth |
 | 6 | [Which laboratories issue the reports?](analysis/06-lab-mix.md) | Freedom Diagnostics issued 67.8% of included reports |
 
+## Questions this data answers
+
+- **Are peptide vials underdosed?** Often enough to matter. 49.9% of 68,267 tested vials are within 10% of the printed label and 4,473 are more than 10% under it. [Analysis 1](analysis/01-quantity-vs-label.md)
+- **Is purity the problem?** Rarely. The median purity is above 99% for most compounds. The informative tail is the 0.77% of purity results at zero, where the laboratory did not find the labelled compound. [Analysis 3](analysis/03-purity-and-zero-identity.md)
+- **How often is endotoxin tested?** 12.9% of reports carry any endotoxin result. The rest say nothing about endotoxin either way. [Analysis 2](analysis/02-endotoxin-testing-rate.md)
+- **Can a report be checked with the laboratory?** 98.4% carry a verification URL. [Analysis 4](analysis/04-verifiability.md)
+- **Which laboratories issue the public reports?** Freedom Diagnostics (67.8%), Janoshik (13.4%) and Finnrick panel labs (anonymized) (12.5%) lead this corpus. That reflects what is public and collected, not market share. [Analysis 6](analysis/06-lab-mix.md)
+- **Is this a market sample?** No. Vials are tested and published by choice, so every page states what its figure cannot establish.
+- **Where is one specific report?** Not here. Per-record search with laboratory, client and batch as printed is at [titratelab.com/coa](https://titratelab.com/coa?src=github).
+
 ## Files
 
 | Path | Contents |
@@ -83,6 +93,19 @@ Every cell in every table holds at least 10 records. No file names a vendor, cli
 - 28,538 included reports have no quantity-versus-label figure and 9,540 have no measured purity. Shares are always computed over the records that have the field.
 - Quantity deviation is measured against the printed label. A separate batch claim is not substituted.
 - A test record describes one vial on one date. It does not establish the safety, quality or suitability of a product, a batch or a vendor, and nothing here is medical advice.
+
+## Other open peptide lab datasets
+
+Measured 2026-10-12 from each project's public files, listed so a reader can pick the right source. The figures for the other projects are as of that date; this repository's row updates with every release.
+
+| Dataset | What it holds | Size | Last updated |
+|---|---|---|---|
+| [vialaudit/peptide-coa-data](https://github.com/vialaudit/peptide-coa-data) | COA metadata from public laboratory listings plus a seven-vendor price index | 233 COA rows, 81 price rows | 2026-05-11 |
+| [peptigrity/peptide-purity-index](https://github.com/peptigrity/peptide-purity-index) | A recency-weighted purity index, one row per compound | 78 rows | 2026-09-29 |
+| [ThePeptideWatch/peptide-watch-dataset](https://github.com/ThePeptideWatch/peptide-watch-dataset) | A vendor-level audit of UK sellers' certificates | 500 vendor records | 2026-10-11 |
+| This repository | Aggregates by compound, laboratory and month over 96,805 included reports | 68 compounds, 26 laboratories, 44 months | 2026-10-12 |
+
+The vendor-level audit answers a question this repository deliberately does not; see [methodology/privacy-boundary.md](methodology/privacy-boundary.md).
 
 ## Freshness
 

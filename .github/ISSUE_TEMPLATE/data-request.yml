@@ -1,0 +1,38 @@
+name: Data request
+description: Ask for a cut of the data that this repository does not publish.
+title: "Data request: "
+labels: [data-request]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repository publishes vendor-blind aggregates. Per-record and vendor-identified data is available through the Data API (https://titratelab.com/developer?src=github). Use this form if you need something else, such as a custom aggregate, a historical cut, or a research collaboration. Requests are public; use the contact form on titratelab.com for a private request.
+  - type: textarea
+    id: need
+    attributes:
+      label: What do you need
+      description: Fields, compounds, labs, date range, granularity.
+    validations:
+      required: true
+  - type: textarea
+    id: use
+    attributes:
+      label: What it is for
+      description: Research, journalism, a product, internal analysis. One or two sentences.
+    validations:
+      required: true
+  - type: dropdown
+    id: volume
+    attributes:
+      label: Expected volume
+      options:
+        - One-off extract
+        - Monthly refresh
+        - Continuous access
+    validations:
+      required: true
+  - type: input
+    id: org
+    attributes:
+      label: Organization or affiliation
+      description: Optional.

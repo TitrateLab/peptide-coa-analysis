@@ -1,0 +1,44 @@
+{% macro chart(name, alt) -%}
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../charts/{{ name }}-dark.svg">
+  <img alt="{{ alt }}" src="../charts/{{ name }}-light.svg" width="900">
+</picture>
+{%- endmacro -%}
+# Which laboratories issue the reports?
+
+**Verdict:** {{ labs_named[0].lab }} issued {{ labs_named[0].share_of_included | pct1 }} of the {{ included | comma }} included reports, {{ labs_named[1].lab }} {{ labs_named[1].share_of_included | pct1 }} and {{ labs_named[2].lab }} {{ labs_named[2].share_of_included | pct1 }}. That mix describes this corpus, not the testing market: one laboratory's public portal is collected nearly in full, others partially, and some laboratories publish nothing. Read the laboratory table as "what is public and collected", never as market share.
+
+Release {{ m.version }}, records observed through {{ m.observed_through[:10] }}.
+
+{{ chart("lab-mix", "Share of included reports by laboratory and quarter, four largest laboratories and all others") }}
+
+## By laboratory
+
+Every laboratory label above the cell floor, in order of volume. Rules for aliases, the anonymized panel group and the floor fold are in [methodology/canonicalization.md](../methodology/canonicalization.md).
+
+| Laboratory | Reports | Share | Median purity | With endotoxin | With verification URL | First test | Latest test |
+|---|---:|---:|---:|---:|---:|---|---|
+{% for r in labs %}
+| {% if r.profile_url %}[{{ r.lab }}]({{ r.profile_url }}?src=github){% else %}{{ r.lab }}{% endif %} | {{ r.test_records | comma }} | {{ r.share_of_included | pct1 }} | {{ r.median_purity_pct | num2 }}% | {{ r.endotoxin_share | pct1 }} | {{ r.verifiable_share | pct1 }} | {{ r.earliest_test_date }} | {{ r.latest_test_date }} |
+{% endfor %}
+
+## What the figure means
+
+Laboratories differ in what they offer and what they publish. A laboratory with a public portal and a verification link on every certificate will dominate any corpus built from public evidence. A laboratory that returns results only to the client appears here only when a client publishes them. The laboratory column therefore says where public evidence comes from. It does not rank laboratories, and TitrateLab's laboratory profiles at [titratelab.com/labs](https://titratelab.com/labs?src=github) explain what each one publishes.
+
+"Finnrick panel labs (anonymized)" groups results from a testing service that sends vials to several laboratories it identifies only by letter. "Other labs" groups {{ m.lab_dimension.folded_labs }} laboratories with fewer than {{ m.minimum_cell_size }} included records each ({{ m.lab_dimension.folded_records | comma }} records in total).
+
+## Method
+
+- Population: all included records.
+- Laboratory labels are the names printed on the report after one alias rule ({% for a, c in m.lab_dimension.aliases.items() %}"{{ a }}" is "{{ c }}"{% if not loop.last %}; {% endif %}{% endfor %}), the panel-group rule and the floor fold.
+- Shares by quarter in the chart are computed from `data/latest/lab_month.csv`; the table is `data/latest/labs.csv`.
+
+## Limitations
+
+- Collection coverage per laboratory is uneven and changes as sources are added.
+- Two printed names may belong to one laboratory. Only documented aliases are merged; the rest are left as printed rather than guessed.
+
+## See the records
+
+Laboratory profiles: [titratelab.com/labs](https://titratelab.com/labs?src=github). Per-record search: [titratelab.com/coa](https://titratelab.com/coa?src=github).

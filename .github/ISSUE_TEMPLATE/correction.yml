@@ -1,0 +1,23 @@
+name: Report a wrong number
+description: A figure, chart, or definition in this repository looks wrong.
+title: "Correction: "
+labels: [correction]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: File and line, chart name, or README section.
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A lab report URL, a calculation, or a reference. Public lab reports are public evidence and can be linked.

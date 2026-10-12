@@ -1,0 +1,45 @@
+{% macro chart(name, alt) -%}
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../charts/{{ name }}-dark.svg">
+  <img alt="{{ alt }}" src="../charts/{{ name }}-light.svg" width="900">
+</picture>
+{%- endmacro -%}
+# How often is endotoxin tested at all?
+
+**Verdict:** {{ endotoxin_share | pct1 }} of {{ included | comma }} included reports carry any endotoxin result. Among the {{ e_rows | length }} compounds with at least 300 reports, the rate runs from {{ e_rows[-1].endotoxin_share | pct1 }} ({{ e_rows[-1].compound }}) to {{ e_rows[0].endotoxin_share | pct1 }} ({{ e_rows[0].compound }}). The remaining {{ miss.included_records_without_endotoxin_result | comma }} reports say nothing about endotoxin either way: the test was not ordered, so the report cannot pass or fail it.
+
+Release {{ m.version }}, records observed through {{ m.observed_through[:10] }}.
+
+{{ chart("endotoxin-testing-rate", "Share of lab reports that include any endotoxin result, by compound") }}
+
+## By compound
+
+Compounds with at least 300 reports, ranked by the share of reports that include an endotoxin result.
+
+| Compound | Reports | With an endotoxin result | Share |
+|---|---:|---:|---:|
+{% for r in e_rows %}
+| {{ r.compound }} | {{ r.test_records | comma }} | {{ r.endotoxin_results | comma }} | {{ r.endotoxin_share | pct1 }} |
+{% endfor %}
+
+## What the figure means
+
+Endotoxin testing is a separate assay from purity and quantity, ordered separately and priced separately. A certificate that reports purity and quantity but no endotoxin figure is a complete certificate for what was ordered. It is not evidence about endotoxin.
+
+The share counted here includes every kind of endotoxin outcome: a numeric value, a "below detection limit" line, or a pass. It does not say what the outcome was, only that the question was asked.
+
+## Method
+
+- Population: all included records ({{ included | comma }}).
+- A record counts as carrying an endotoxin result when the extracted endotoxin status field is non-empty.
+- Source columns: `endotoxin_results` and `test_records` in `data/latest/compounds.csv`; the same columns by laboratory in `labs.csv` and by month in `months.csv`.
+
+## Limitations
+
+- The share reflects what was ordered and what was printed, not the safety of any vial.
+- Extraction can miss an endotoxin line printed in an unusual layout. Completeness counts are in the manifest under `missing_data`.
+- Laboratories differ in whether they offer the assay at all, so the laboratory mix in this corpus shapes the overall rate.
+
+## See the records
+
+Reports that include endotoxin results can be found through the per-record search at [titratelab.com/coa](https://titratelab.com/coa?src=github).

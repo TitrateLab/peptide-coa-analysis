@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this data or analysis, cite it as below and link the release version."
+type: dataset
+title: "TitrateLab peptide COA analysis: vendor-blind aggregates of published lab reports"
+authors:
+  - name: "TitrateLab"
+    website: "https://titratelab.com"
+version: "2026-10-12"
+date-released: "2026-10-12"
+url: "https://github.com/titratelab/peptide-coa-analysis"
+repository-code: "https://github.com/titratelab/peptide-coa-analysis"
+license: CC-BY-4.0
+keywords:
+  - peptides
+  - certificate of analysis
+  - COA
+  - HPLC purity
+  - endotoxin
+  - laboratory testing
+  - open data
+abstract: >-
+  Monthly, vendor-blind aggregates of 96,805 published peptide lab reports
+  (68 compounds, 26 named laboratories,
+  2022-07 to 2026-09) by compound, laboratory and month, with purity,
+  quantity-versus-label, endotoxin and verifiability statistics, a manifest with coverage
+  and missing-data counts, and the method behind every figure.

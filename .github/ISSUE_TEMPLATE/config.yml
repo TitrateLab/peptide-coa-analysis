@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Request Data API access
+    url: https://titratelab.com/developer?src=github
+    about: Query access to the vendor-identified corpus, reviewed by hand.
+  - name: Private question
+    url: https://titratelab.com/contact?src=github
+    about: Anything you would rather not post publicly.

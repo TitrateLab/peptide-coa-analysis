@@ -1,0 +1,43 @@
+{% macro chart(name, alt) -%}
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../charts/{{ name }}-dark.svg">
+  <img alt="{{ alt }}" src="../charts/{{ name }}-light.svg" width="900">
+</picture>
+{%- endmacro -%}
+# How fast is public testing growing?
+
+**Verdict:** {{ recent_total | comma }} included reports carry a test date in the 12 full months from {{ recent_12[0].month | monthlabel }} to {{ recent_12[-1].month | monthlabel }}, against {{ prior_total | comma }} in the 12 months before, a change of {{ growth_pct | signed1 }}. The four most-tested compounds over that period are {% for c in top4 %}{{ c }}{% if not loop.last %}, {% endif %}{% endfor %}.
+
+Release {{ m.version }}, records observed through {{ m.observed_through[:10] }}. The partial month {{ m.observed_through[:7] | monthlabel }} is excluded from every figure on this page.
+
+{{ chart("testing-volume", "Published lab reports by test month, last 24 full months") }}
+
+{{ chart("compound-volume", "Reports per month for the four most-tested compounds") }}
+
+## By month
+
+| Month | Reports | With purity | Median purity | With quantity | Within 10% of label | With endotoxin |
+|---|---:|---:|---:|---:|---:|---:|
+{% for r in months_24 %}
+| {{ r.month | monthlabel }} | {{ r.test_records | comma }} | {{ r.purity_results | comma }} | {{ r.median_purity_pct | num2 }}% | {{ r.quantity_results | comma }} | {{ r.quantity_within_10pct_pct | pct1 }} | {{ r.endotoxin_results | comma }} |
+{% endfor %}
+
+## What the figure means
+
+The month is the test date printed on the report, not the date TitrateLab collected it. A rise in a month can mean more testing, more publishing of tests, or more collection of published tests; the corpus cannot separate the three. The most recent months also keep growing after a release as laboratories publish and collectors catch up, so the newest full month is understated relative to how it will look in a later release.
+
+## Method
+
+- Population: included records with a valid test date ({{ cov.included_records_with_test_month | comma }}; {{ miss.included_records_without_test_date | comma }} have none).
+- Months below the cell floor of {{ m.minimum_cell_size }} records are omitted, which is why the series starts at {{ months[0].month | monthlabel }}.
+- Growth compares the sum of the last 12 full months with the 12 before them.
+- Source files: `data/latest/months.csv` and `data/latest/compound_month.csv`.
+
+## Limitations
+
+- Collection coverage changed over time as sources were added. The early part of the series reflects what had been collected, not what had been tested.
+- A few reports carry implausible dates from misread digits; they fall into months below the floor and are omitted.
+
+## See the records
+
+Search by compound and date at [titratelab.com/coa](https://titratelab.com/coa?src=github).

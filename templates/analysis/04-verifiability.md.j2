@@ -1,0 +1,44 @@
+# Can a reader verify a report with the laboratory?
+
+**Verdict:** {{ verifiable_share | pct1 }} of {{ included | comma }} included reports carry a laboratory verification URL, the link printed on the certificate that resolves to the laboratory's own copy. {{ miss.included_records_without_verification_url | comma }} carry none. By laboratory, the share depends almost entirely on whether the laboratory operates a public verification portal.
+
+Release {{ m.version }}, records observed through {{ m.observed_through[:10] }}.
+
+## Completeness of the included records
+
+| Field | Records without it | Share of included |
+|---|---:|---:|
+| Verification URL | {{ miss.included_records_without_verification_url | comma }} | {{ (100.0 * miss.included_records_without_verification_url / included) | pct1 }} |
+| Measured purity | {{ miss.included_records_without_measured_purity | comma }} | {{ (100.0 * miss.included_records_without_measured_purity / included) | pct1 }} |
+| Quantity versus label | {{ miss.included_records_without_label_quantity_deviation | comma }} | {{ (100.0 * miss.included_records_without_label_quantity_deviation / included) | pct1 }} |
+| Endotoxin result | {{ miss.included_records_without_endotoxin_result | comma }} | {{ (100.0 * miss.included_records_without_endotoxin_result / included) | pct1 }} |
+| Test date | {{ miss.included_records_without_test_date | comma }} | {{ (100.0 * miss.included_records_without_test_date / included) | pct1 }} |
+
+## Verification by laboratory
+
+Laboratory labels with at least {{ m.minimum_cell_size }} included records, in order of volume. A blank profile means TitrateLab publishes no profile for that label yet.
+
+| Laboratory | Reports | With verification URL | Profile |
+|---|---:|---:|---|
+{% for r in labs_named %}
+| {{ r.lab }} | {{ r.test_records | comma }} | {{ r.verifiable_share | pct1 }} | {% if r.profile_url %}[profile]({{ r.profile_url }}?src=github){% else %}{% endif %} |
+{% endfor %}
+
+## What the figure means
+
+A verification URL lets anyone compare the certificate they were shown with the copy the laboratory holds. A certificate without one can still be genuine; it simply cannot be checked without contacting the laboratory. A certificate with one can still be misused, for example by presenting a real certificate for a different batch, which is why the per-record pages on titratelab.com show the client and batch as printed.
+
+## Method
+
+- Population: all included records.
+- A record is verifiable when the extracted verification URL field is non-empty. The URL itself is never published here.
+- Source columns: `verifiable_records` and `test_records` in `data/latest/compounds.csv` and `labs.csv`.
+
+## Limitations
+
+- The presence of a URL is recorded at extraction time. Whether the link still resolves is not re-checked for this file.
+- Some laboratories print a QR code rather than a URL; extraction records what it can read.
+
+## See the records
+
+Open any report at [titratelab.com/coa](https://titratelab.com/coa?src=github) to follow its verification link.

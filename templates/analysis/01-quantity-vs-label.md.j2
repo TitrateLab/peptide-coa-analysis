@@ -1,0 +1,46 @@
+{% macro chart(name, alt) -%}
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../charts/{{ name }}-dark.svg">
+  <img alt="{{ alt }}" src="../charts/{{ name }}-light.svg" width="900">
+</picture>
+{%- endmacro -%}
+# How often is the tested quantity within 10% of the label?
+
+**Verdict:** {{ within_share | pct1 }} of {{ quantity_results | comma }} quantity results are within plus or minus 10% of the printed label. By compound, among the {{ q_rows | length }} with at least 100 quantity results, the share runs from {{ q_worst.quantity_within_10pct_pct | pct1 }} ({{ q_worst.compound }}) to {{ q_best.quantity_within_10pct_pct | pct1 }} ({{ q_best.compound }}). {{ under_label_total | comma }} results are more than 10% under label. Purity, by contrast, is above 99% at the median for most compounds, so the quantity figure is where vials differ.
+
+Release {{ m.version }}, records observed through {{ m.observed_through[:10] }}.
+
+{{ chart("quantity-within-label", "Share of tested vials within 10% of the printed label, fifteen most-tested compounds") }}
+
+## By compound
+
+Compounds with at least 100 quantity results, ranked by the share within 10% of label.
+
+| Compound | Quantity results | Within 10% of label | More than 10% under label |
+|---|---:|---:|---:|
+{% for r in q_rows %}
+| {{ r.compound }} | {{ r.quantity_results | comma }} | {{ r.quantity_within_10pct_pct | pct1 }} | {{ r.quantity_more_than_10pct_under_label | comma }} ({{ r.under_label_share | pct1 }}) |
+{% endfor %}
+
+## What the figure means
+
+A laboratory that reports a tested quantity states how much of the compound it found in the vial, usually in milligrams. The printed label states how much the vial is supposed to contain. The deviation is the tested quantity relative to the label, in percent. "Within 10%" counts results between minus 10% and plus 10%.
+
+Blends read low more often than single compounds. A blend label states the total of several components, and a laboratory that quantifies only one of them reports a shortfall that is partly an artefact of what was measured. Treat blend rows as describing the measurement, not necessarily the vial.
+
+## Method
+
+- Population: included records with a quantity-versus-label figure ({{ quantity_results | comma }} of {{ included | comma }}).
+- Deviation is against the printed label only. Where a laboratory also reports deviation against a separate batch claim, that figure is not substituted.
+- Cell floor: every compound row holds at least {{ m.minimum_cell_size }} records; the table above additionally requires 100 quantity results so that a share is not driven by a handful of vials.
+- Source columns: `quantity_results`, `quantity_within_10pct_pct`, `quantity_more_than_10pct_under_label` in `data/latest/compounds.csv`.
+
+## Limitations
+
+- {{ miss.included_records_without_label_quantity_deviation | comma }} included records have no quantity figure, most often because the laboratory did not quantify or the report did not print a label amount. They are absent from every share on this page.
+- Quantification methods differ between laboratories, and a vial tested twice can yield two figures. The corpus records what each report printed.
+- The corpus is not a random sample. Vials are sent for testing by people who chose to test them.
+
+## See the records
+
+Search individual reports, with laboratory, client and batch as printed, at [titratelab.com/coa](https://titratelab.com/coa?src=github). Per-record, vendor-identified queries are available through the [Data API](https://titratelab.com/developer?src=github).

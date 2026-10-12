@@ -1,0 +1,112 @@
+{
+  "dataset": "TitrateLab vendor-blind peptide lab corpus snapshot",
+  "version": "2026-10-12",
+  "schema_version": 2,
+  "generated_at": "2026-10-12T02:15:13Z",
+  "observed_through": "2026-10-12T00:23:06Z",
+  "vendor_blind": true,
+  "minimum_cell_size": 10,
+  "methodology_url": "https://titratelab.com/methodology",
+  "data_catalog_url": "https://titratelab.com/data",
+  "repository_url": "https://github.com/titratelab/peptide-coa-analysis",
+  "projection": {
+    "snapshot_id": "20261012T021040Z",
+    "generated_at": "2026-10-12T02:10:42Z",
+    "coa_data_as_of": "2026-10-12T00:23:06Z"
+  },
+  "scope": "Published records resolved to a recognized canonical peptide or peptide blend, aggregated by compound. Compounds below the minimum cell size are omitted.",
+  "exclusions": [
+    "No vendor, manufacturer, client, submitter, batch, or certificate identity is included.",
+    "Unpublished records, non-peptide analytical work, and rows without a recognized canonical peptide name are excluded.",
+    "Dose figures use deviation from the printed label; deviation from a separate batch claim is not substituted.",
+    "A test record is not a random market sample and does not establish product safety or suitability.",
+    "Laboratory labels are the names printed on public reports; laboratories below the cell floor are reported as 'Other labs' and Finnrick's anonymized panel laboratories as one group."
+  ],
+  "totals": {
+    "published_entries": 116363,
+    "distinct_certificate_identifiers": 115076,
+    "certificate_identifier_key": "Distinct values of COALESCE(verify_url, lab_name:test_id) over all published entries. The projection carries no file hashes, so this is an upper bound on distinct certificates: a certificate published twice without a verification URL and under two test ids counts twice."
+  },
+  "coverage": {
+    "eligible_named_records": 96929,
+    "included_records": 96805,
+    "included_compounds": 68,
+    "included_records_with_test_month": 93537,
+    "excluded_small_cell_compounds": 54,
+    "excluded_small_cell_records": 124,
+    "excluded_noncanonical_or_invalid_records": 17774,
+    "source_categories": {
+      "Community and buyer submissions": 2917,
+      "Independent lab panel reports": 12100,
+      "Independent lab public portals": 77609,
+      "Third-party aggregators and vendor libraries": 4303
+    }
+  },
+  "missing_data": {
+    "included_records_without_measured_purity": 9540,
+    "included_records_without_label_quantity_deviation": 28538,
+    "included_records_without_endotoxin_result": 84289,
+    "included_records_without_verification_url": 1584,
+    "included_records_without_test_date": 3268
+  },
+  "lab_dimension": {
+    "aliases": {
+      "janoshik analytical": "Janoshik"
+    },
+    "service_name_rule": "A report printed with the service name 'Finnrick' as its laboratory is counted with the Finnrick panel group.",
+    "finnrick_panel_rule": "Finnrick reports name their panel laboratories as 'Lab A' to 'Lab N'; those records are reported together as 'Finnrick panel labs (anonymized)'.",
+    "not_recorded_label": "Lab not recorded",
+    "other_label": "Other labs",
+    "folded_labs": 19,
+    "folded_records": 58,
+    "suppressed_sentinel_records": 0,
+    "published_labs": 26
+  },
+  "data_dictionary": {
+    "test_records": "Published lab-report entries in the cell after canonical-name resolution.",
+    "purity_results": "Records with a reported purity greater than zero.",
+    "zero_identity_results": "Records reported at zero purity or with no identified target compound.",
+    "mean_purity_pct": "Arithmetic mean of purity_results, in percent.",
+    "median_purity_pct": "Median of purity_results, in percent.",
+    "quantity_results": "Records with tested quantity expressed as percent deviation from the printed label.",
+    "quantity_within_10pct_pct": "Share of quantity results within plus or minus 10% of the printed label.",
+    "quantity_more_than_10pct_under_label": "Quantity results more than 10% below the printed label.",
+    "endotoxin_results": "Records carrying any endotoxin result, including 'below detection' outcomes.",
+    "verifiable_records": "Records carrying a laboratory verification URL.",
+    "month": "Calendar month of the test date printed on the report (YYYY-MM).",
+    "lab": "Laboratory label as printed on the public report, after the alias and floor rules in lab_dimension.",
+    "profile_url": "TitrateLab laboratory profile when one is published; blank otherwise."
+  },
+  "files": {
+    "compounds.csv": {
+      "rows": 68,
+      "sha256": "939a8ea980a6e50d36e7fe6e699f39438c114e51105bccd8878a446c8bc0f048",
+      "bytes": 5491
+    },
+    "compounds.json": {
+      "rows": 68,
+      "sha256": "449a97312df42a435cd19811269116a5ea1e7cd07b3544f09034a6b3a307f376",
+      "bytes": 36509
+    },
+    "compound_month.csv": {
+      "rows": 744,
+      "sha256": "51018fcc7c9c078bfba9e1953cb9845c8e1a86c33aa1fd0232323bc93b29b4dc",
+      "bytes": 31959
+    },
+    "labs.csv": {
+      "rows": 28,
+      "sha256": "08b8bda98812897813d6bce16461a62199eee9c782e18865c15e964edb467686",
+      "bytes": 2943
+    },
+    "lab_month.csv": {
+      "rows": 180,
+      "sha256": "966d539670a9257750be8e9d52ecda31242440c6056f7fcbe61c5b0cfee5b534",
+      "bytes": 7804
+    },
+    "months.csv": {
+      "rows": 45,
+      "sha256": "427a8f390df4bcdd3ef4ad27cc34bff313ba3a3e66ec30f87283e7c29b81ee1a",
+      "bytes": 1879
+    }
+  }
+}

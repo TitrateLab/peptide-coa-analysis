@@ -1,0 +1,181 @@
+lab,month,test_records,purity_results,median_purity_pct,quantity_results,endotoxin_results
+AV Analytics,2026-08,10,10,99.79,7,0
+AV Analytics,2026-09,24,24,99.79,20,0
+BioAnalytical Laboratory,2025-10,22,13,99.8,0,0
+BioAnalytical Laboratory,2025-11,11,6,99.8,0,0
+BioRegen,2025-11,10,1,99.91,3,0
+BTLabs,2026-08,17,14,99.7,14,2
+BTLabs,2026-09,12,12,99.8,12,0
+Chromate,2024-03,12,12,99.17,0,0
+Chromate,2024-04,13,13,99.29,0,0
+Chromate,2024-05,19,15,99.63,0,0
+Chromate,2024-06,23,22,99.1,0,0
+Chromate,2024-07,27,27,99.51,0,0
+Chromate,2024-08,20,16,99.54,1,0
+Chromate,2024-09,35,34,99.61,0,0
+Chromate,2024-10,11,10,99.73,0,0
+Chromate,2024-11,27,24,99.62,1,0
+Chromate,2024-12,55,53,99.65,0,0
+Chromate,2025-01,24,22,99.81,2,0
+Chromate,2025-02,42,41,99.89,2,0
+Chromate,2025-03,41,37,99.72,0,0
+Chromate,2025-04,60,51,99.94,1,0
+Chromate,2025-05,52,41,99.7,6,0
+Chromate,2025-06,76,73,99.65,1,0
+Chromate,2025-07,121,107,99.47,4,1
+Chromate,2025-08,117,103,99.64,0,1
+Chromate,2025-09,89,67,99.51,3,3
+Chromate,2025-10,150,129,99.26,9,25
+Chromate,2025-11,48,39,99.39,0,8
+Chromate,2025-12,80,73,99.36,0,8
+Chromate,2026-01,36,33,99.51,1,2
+Chromate,2026-02,85,78,99.41,0,37
+Chromate,2026-03,102,84,99.2,32,4
+Chromate,2026-04,56,50,99.37,10,21
+Chromate,2026-05,65,59,99.03,0,42
+Chromate,2026-06,33,24,98.89,1,2
+Chromate,2026-07,44,34,99.42,0,15
+Chromate,2026-08,17,1,89.13,1,2
+Ethos Analytics,2026-03,16,0,,0,0
+Ethos Analytics,2026-07,24,0,,0,8
+Ethos Analytics,2026-08,16,0,,0,2
+Finnrick panel labs (anonymized),2024-12,27,27,99.7,27,9
+Finnrick panel labs (anonymized),2025-01,38,38,99.54,38,0
+Finnrick panel labs (anonymized),2025-02,297,281,99.68,297,43
+Finnrick panel labs (anonymized),2025-03,234,217,99.57,234,28
+Finnrick panel labs (anonymized),2025-04,186,180,99.55,186,18
+Finnrick panel labs (anonymized),2025-05,433,424,99.63,433,47
+Finnrick panel labs (anonymized),2025-06,250,241,99.71,250,101
+Finnrick panel labs (anonymized),2025-07,404,391,99.64,396,191
+Finnrick panel labs (anonymized),2025-08,509,486,99.81,493,293
+Finnrick panel labs (anonymized),2025-09,456,449,99.91,454,243
+Finnrick panel labs (anonymized),2025-10,809,798,99.76,806,429
+Finnrick panel labs (anonymized),2025-11,612,595,99.8,610,364
+Finnrick panel labs (anonymized),2025-12,670,649,99.8,669,360
+Finnrick panel labs (anonymized),2026-01,1028,1003,99.8,1024,594
+Finnrick panel labs (anonymized),2026-02,1147,1131,99.81,1145,611
+Finnrick panel labs (anonymized),2026-03,1203,1170,99.9,1201,654
+Finnrick panel labs (anonymized),2026-04,517,474,99.9,499,311
+Finnrick panel labs (anonymized),2026-05,558,515,99.9,541,316
+Finnrick panel labs (anonymized),2026-06,716,583,99.8,682,350
+Finnrick panel labs (anonymized),2026-07,606,484,99.9,600,149
+Finnrick panel labs (anonymized),2026-08,737,616,99.9,719,161
+Finnrick panel labs (anonymized),2026-09,677,583,99.9,674,91
+Freedom Diagnostics,2022-07,49,49,99.79,40,0
+Freedom Diagnostics,2025-01,145,137,99.68,93,8
+Freedom Diagnostics,2025-02,52,51,99.73,8,1
+Freedom Diagnostics,2025-03,93,93,99.69,0,0
+Freedom Diagnostics,2025-04,55,55,99.73,0,0
+Freedom Diagnostics,2025-05,206,203,99.72,98,4
+Freedom Diagnostics,2025-06,312,284,99.7,220,21
+Freedom Diagnostics,2025-07,493,439,99.64,280,49
+Freedom Diagnostics,2025-08,719,657,99.69,465,49
+Freedom Diagnostics,2025-09,1177,1075,99.74,751,97
+Freedom Diagnostics,2025-10,1754,1497,99.75,1117,249
+Freedom Diagnostics,2025-11,2191,1934,99.74,1459,254
+Freedom Diagnostics,2025-12,2512,2242,99.73,1638,253
+Freedom Diagnostics,2026-01,2880,2591,99.67,1768,277
+Freedom Diagnostics,2026-02,4101,3716,99.7,2591,376
+Freedom Diagnostics,2026-03,3627,3362,99.71,2529,257
+Freedom Diagnostics,2026-04,3952,3807,99.74,2902,148
+Freedom Diagnostics,2026-05,5494,5159,99.79,4029,316
+Freedom Diagnostics,2026-06,6970,6805,99.78,5233,119
+Freedom Diagnostics,2026-07,7724,7588,99.78,5933,74
+Freedom Diagnostics,2026-08,9587,9382,99.81,7421,830
+Freedom Diagnostics,2026-09,9782,9619,99.8,7599,2458
+Freedom Diagnostics,2026-10,1634,1588,99.77,1193,489
+ILS Laboratories,2026-04,18,18,99.55,17,1
+ILS Laboratories,2026-05,66,61,99.66,48,23
+ILS Laboratories,2026-06,81,81,99.78,65,35
+ILS Laboratories,2026-07,98,98,99.7,82,24
+ILS Laboratories,2026-08,106,105,99.65,92,13
+ILS Laboratories,2026-09,44,41,99.73,36,0
+Janoshik,2023-03,11,10,97.94,2,0
+Janoshik,2023-04,13,12,99.75,11,0
+Janoshik,2023-05,18,18,99.63,3,0
+Janoshik,2023-06,13,13,99.82,10,0
+Janoshik,2023-08,18,15,99.77,4,0
+Janoshik,2023-09,53,51,99.7,16,0
+Janoshik,2023-10,21,18,99.75,16,0
+Janoshik,2023-11,51,49,99.67,15,0
+Janoshik,2023-12,40,22,99.73,24,0
+Janoshik,2024-01,51,49,99.73,11,0
+Janoshik,2024-02,49,44,99.71,24,0
+Janoshik,2024-03,46,40,99.83,17,0
+Janoshik,2024-04,74,64,99.78,48,0
+Janoshik,2024-05,127,119,99.78,80,0
+Janoshik,2024-06,140,122,99.74,72,3
+Janoshik,2024-07,117,98,99.64,72,3
+Janoshik,2024-08,175,126,99.51,92,2
+Janoshik,2024-09,118,95,99.69,67,0
+Janoshik,2024-10,114,88,99.5,55,4
+Janoshik,2024-11,138,112,99.62,77,1
+Janoshik,2024-12,105,87,99.61,56,1
+Janoshik,2025-01,176,141,99.68,113,1
+Janoshik,2025-02,169,141,99.78,106,2
+Janoshik,2025-03,338,281,99.75,259,8
+Janoshik,2025-04,413,339,99.47,296,10
+Janoshik,2025-05,418,331,99.55,308,13
+Janoshik,2025-06,396,334,99.57,258,2
+Janoshik,2025-07,512,410,99.71,332,12
+Janoshik,2025-08,502,367,99.75,301,4
+Janoshik,2025-09,621,488,99.73,409,14
+Janoshik,2025-10,623,475,99.6,359,5
+Janoshik,2025-11,879,675,99.62,489,15
+Janoshik,2025-12,740,570,99.61,439,10
+Janoshik,2026-01,749,551,99.68,441,25
+Janoshik,2026-02,604,422,99.72,317,21
+Janoshik,2026-03,489,333,99.77,265,10
+Janoshik,2026-04,617,430,99.72,313,33
+Janoshik,2026-05,492,328,99.58,254,44
+Janoshik,2026-06,485,353,99.66,228,23
+Janoshik,2026-07,639,451,99.6,356,47
+Janoshik,2026-08,503,329,99.59,282,51
+Janoshik,2026-09,17,10,99.79,9,1
+Kovera Labs,2026-03,48,48,99.94,36,2
+Kovera Labs,2026-04,48,48,99.93,39,18
+Kovera Labs,2026-05,48,48,99.78,42,18
+Kovera Labs,2026-06,23,16,99.48,12,11
+Kovera Labs,2026-07,13,13,99.52,10,3
+Krause Analytical,2025-11,10,10,99.72,9,0
+Krause Analytical,2026-04,19,3,99.4,18,0
+Krause Analytical,2026-07,16,10,98.15,16,0
+Lab not recorded,2024-11,10,10,99.39,10,0
+Lab not recorded,2025-04,11,11,99.44,8,0
+Lab not recorded,2025-06,10,10,99.56,5,0
+Lab not recorded,2025-09,22,18,99.78,15,0
+Lab not recorded,2025-10,15,13,99.7,11,0
+Lab not recorded,2025-11,64,63,99.68,34,0
+Lab not recorded,2025-12,49,46,99.59,37,0
+Lab not recorded,2026-01,68,66,99.7,35,0
+Lab not recorded,2026-02,28,25,99.66,17,0
+Lab not recorded,2026-03,18,18,99.84,8,0
+Lab not recorded,2026-04,31,30,99.73,20,0
+Optiq Health Labs,2026-08,13,13,99.3,10,13
+Other labs,2026-03,11,5,99.69,5,0
+Other labs,2026-05,11,9,99.7,0,0
+Peptide Test,2024-09,27,27,99.7,27,0
+Peptide Test,2024-11,28,28,99.8,28,0
+Peptide Test,2024-12,46,45,99.83,45,0
+Peptide Test,2025-01,55,54,99.81,54,0
+Peptide Test,2025-02,78,78,98.38,78,0
+Peptide Test,2025-03,15,15,99.76,15,0
+Peptide Test,2025-04,12,12,99.78,12,0
+Peptide Test,2025-06,14,14,99.6,14,0
+Peptide Test,2026-02,10,10,99.82,8,0
+Prime Analytical Laboratories,2026-03,11,11,99.95,5,0
+Testides,2026-02,12,12,99.52,12,0
+Testides,2026-04,15,15,99.58,14,1
+Testides,2026-05,38,38,99.6,37,30
+Testides,2026-06,24,24,99.72,24,11
+Testides,2026-07,25,25,99.71,25,7
+TrustPointe Analytics,2026-09,11,0,,0,0
+Vanguard Laboratory,2025-07,10,10,99.76,9,0
+Vanguard Laboratory,2025-10,20,20,99.8,19,1
+Vanguard Laboratory,2025-12,26,14,99.74,11,0
+Vanguard Laboratory,2026-01,15,11,99.8,10,2
+Vanguard Laboratory,2026-02,34,29,99.8,22,0
+Vanguard Laboratory,2026-03,41,36,99.8,28,1
+Vanguard Laboratory,2026-04,14,4,99.8,3,0
+Vanguard Laboratory,2026-05,22,14,99.4,8,5
+Vanguard Laboratory,2026-08,21,21,99.5,18,16

@@ -1,0 +1,45 @@
+{% macro chart(name, alt) -%}
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../charts/{{ name }}-dark.svg">
+  <img alt="{{ alt }}" src="../charts/{{ name }}-light.svg" width="900">
+</picture>
+{%- endmacro -%}
+# What do purity figures look like, and how often is the compound absent?
+
+**Verdict:** Purity figures cluster at the top. Of the {{ top_compounds | length }} most-tested compounds, {{ top_compounds | selectattr("median_purity_pct", "ge", 99.0) | list | length }} have a median purity of 99% or higher. The informative tail is at zero: {{ zero_results | comma }} of {{ (purity_results + zero_results) | comma }} purity results ({{ zero_share | pct2 }}) report zero, meaning the laboratory did not identify the labelled compound in the vial at all. Among compounds with at least 300 purity results the zero rate runs from {{ z_rows[-1].zero_share | pct2 }} ({{ z_rows[-1].compound }}) to {{ z_rows[0].zero_share | pct2 }} ({{ z_rows[0].compound }}).
+
+Release {{ m.version }}, records observed through {{ m.observed_through[:10] }}.
+
+{{ chart("zero-identity-share", "Share of purity results reported at zero, by compound") }}
+
+## Purity by compound
+
+The fifteen most-tested compounds. Mean and median are computed over results above zero; zero results are counted separately.
+
+| Compound | Purity results | Median purity | Mean purity | Zero identity | Zero share |
+|---|---:|---:|---:|---:|---:|
+{% for r in top_compounds %}
+| {{ r.compound }} | {{ r.purity_results | comma }} | {{ r.median_purity_pct | num2 }}% | {{ r.mean_purity_pct | num2 }}% | {{ r.zero_identity_results | comma }} | {{ r.zero_share | pct2 }} |
+{% endfor %}
+
+## What the figures mean
+
+Purity on a peptide certificate is normally the chromatographic area share of the main peak, in percent. It says how much of what is in the vial is the target compound. It does not say how much is in the vial; that is the quantity figure in [analysis 1](01-quantity-vs-label.md). A vial can be 99.5% pure and 40% under label.
+
+A purity of zero is a different kind of result. The laboratory looked for the labelled compound and did not find it. The vial may contain a different compound, a degraded one, or nothing. Those results are kept out of the mean and median so that they do not drag an average down into a number that describes no real vial, and they are counted on their own.
+
+## Method
+
+- Population: included records with a purity figure ({{ purity_results | comma }} above zero plus {{ zero_results | comma }} at zero). {{ miss.included_records_without_measured_purity | comma }} included records have no purity figure and are absent from this page.
+- Zero share is computed over results above zero plus results at zero.
+- Source columns: `purity_results`, `zero_identity_results`, `mean_purity_pct`, `median_purity_pct` in `data/latest/compounds.csv`.
+
+## Limitations
+
+- Purity figures from different laboratories, methods and dates are pooled. The median is robust to a few outliers but still mixes methods.
+- A reported purity near 100% with a low quantity, or a zero, is where the useful information sits. The average purity of the corpus is not a useful number on its own and is not presented as one.
+- OCR can misread a digit. Consistency checks catch most such errors; some remain. See [methodology/quality-holds.md](../methodology/quality-holds.md).
+
+## See the records
+
+Search individual reports at [titratelab.com/coa](https://titratelab.com/coa?src=github).

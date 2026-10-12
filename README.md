@@ -1,0 +1,98 @@
+# Peptide lab reports, analyzed
+
+96,805 published lab reports for 68 peptides and blends, aggregated vendor-blind by compound, laboratory and month, and released monthly with the method behind every number. This is release **2026-10-12**, built from records observed through 2026-10-12.
+
+The per-record evidence, with the laboratory, client and batch as printed on each public report, is searchable at [titratelab.com/coa](https://titratelab.com/coa?src=github). This repository holds what can be said about the corpus as a whole.
+
+## What the data shows
+
+1. **Purity is rarely the problem. Quantity is.** Across the 35 compounds with at least 100 quantity results, the share of vials within 10% of the printed label runs from 22.2% (LL-37) to 90.1% (Glutathione). Overall, 49.9% of 68,267 quantity results are within 10% of label and 4,473 are more than 10% under it. [Analysis](analysis/01-quantity-vs-label.md)
+2. **Endotoxin testing is uncommon.** 12.9% of included reports carry any endotoxin result. A report without one says nothing about endotoxin either way. [Analysis](analysis/02-endotoxin-testing-rate.md)
+3. **A small share of vials contain none of the labelled compound.** 0.77% of purity results are reported at zero, meaning the laboratory did not identify the target compound. The rest cluster near the top: the median purity for most compounds is above 99%. [Analysis](analysis/03-purity-and-zero-identity.md)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/quantity-within-label-dark.svg">
+  <img alt="Horizontal bar chart of the share of tested vials within 10% of the printed label, for the fifteen most-tested compounds" src="charts/quantity-within-label-light.svg" width="900">
+</picture>
+
+## The corpus in numbers
+
+| Measure | Value | Note |
+|---|---:|---|
+| Published lab-report entries | 116,363 | Every published entry in the corpus, before any exclusion |
+| Distinct certificate identifiers | 115,076 | Upper bound; key and caveat in [methodology/deduplication.md](methodology/deduplication.md) |
+| Included in these tables | 96,805 | Resolved to a recognized peptide name and above the cell floor |
+| Excluded as non-peptide or unresolved | 17,774 | Water, hormones, vitamins, unreadable names |
+| Compounds and blends | 68 | 54 more fell below the floor of 10 records |
+| Named laboratories | 26 | 19 below the floor are reported together as "Other labs" |
+| Months covered | 44 | Jul 2022 to Sep 2026, full months only |
+| Reports with a verification URL | 98.4% | 1,584 carry none |
+
+Sources by category: community and buyer submissions 2,917; independent lab panel reports 12,100; independent lab public portals 77,609; third-party aggregators and vendor libraries 4,303. Definitions in [methodology/collection.md](methodology/collection.md).
+
+## Analyses
+
+| # | Question | Verdict |
+|---|---|---|
+| 1 | [How often is the tested quantity within 10% of the label?](analysis/01-quantity-vs-label.md) | 49.9% overall; 22.2% to 90.1% by compound |
+| 2 | [How often is endotoxin tested at all?](analysis/02-endotoxin-testing-rate.md) | 12.9% of reports carry a result |
+| 3 | [What do purity figures look like, and how often is the compound absent?](analysis/03-purity-and-zero-identity.md) | Zero identity in 0.77% of purity results |
+| 4 | [Can a reader verify a report with the laboratory?](analysis/04-verifiability.md) | 98.4% carry a verification URL |
+| 5 | [How fast is public testing growing?](analysis/05-testing-volume-by-month.md) | 79,217 reports in the last 12 full months, +605.5% on the 12 before; collection coverage grew over the period, so this overstates market growth |
+| 6 | [Which laboratories issue the reports?](analysis/06-lab-mix.md) | Freedom Diagnostics issued 67.8% of included reports |
+
+## Files
+
+| Path | Contents |
+|---|---|
+| `data/latest/manifest.json` | Version, coverage, missing-data counts, laboratory rules, file hashes |
+| `data/latest/compounds.csv` | One row per compound (68 rows) |
+| `data/latest/compound_month.csv` | Compound by test month |
+| `data/latest/labs.csv` | One row per laboratory label, with the TitrateLab profile link where one exists |
+| `data/latest/lab_month.csv` | Laboratory by test month |
+| `data/latest/months.csv` | All included reports by test month |
+| `data/releases/<version>/` | Every release, never rewritten |
+| `schema/data-dictionary.md` | Every column and manifest key |
+| `methodology/` | Collection, deduplication, name resolution, quality, privacy boundary |
+| `notebooks/` | Reproduce every chart from `data/latest` |
+
+Every cell in every table holds at least 10 records. No file names a vendor, client, batch or certificate. The full rule set is in [methodology/privacy-boundary.md](methodology/privacy-boundary.md).
+
+## Get the full data
+
+| Need | Where | State |
+|---|---|---|
+| One report, with laboratory, client and batch as printed | [titratelab.com/coa](https://titratelab.com/coa?src=github) | Free, per-record search |
+| Laboratory profiles and what each publishes | [titratelab.com/labs](https://titratelab.com/labs?src=github) | Free |
+| Per-record, vendor-identified queries | [Data API](https://titratelab.com/developer?src=github) | Controlled beta; every request is reviewed by hand |
+| A cut this repository does not publish | [Open a data request](../../issues/new?template=data-request.yml) | Public issue, answered here |
+| Raw corpus under contract | [Contact](https://titratelab.com/contact?src=github) | Operator-produced, no self-serve |
+
+## Method in brief
+
+- Source: TitrateLab's read-only projection of published lab reports, rebuilt every ten minutes from the live corpus. [Collection](methodology/collection.md)
+- Names: printed compound names resolve to a canonical name; unresolved rows are excluded and counted. Laboratory names follow an alias rule, a panel-group rule and a floor fold. [Canonicalization](methodology/canonicalization.md)
+- Counting: entries and certificate identifiers are both reported, with the key. [Deduplication](methodology/deduplication.md)
+- Quality: extraction is imperfect; completeness is published per field rather than assumed. [Quality holds](methodology/quality-holds.md)
+- Every number in this README and in `analysis/` is rendered from the release files by `scripts/build_release.py`. Nothing is typed by hand.
+
+## Limitations
+
+- The corpus is not a random sample of the market. Vials are tested because someone chose to test them and published because someone chose to publish them.
+- Coverage differs by laboratory. One laboratory's public portal is collected nearly in full; others are collected partially. The laboratory mix describes this corpus, not the testing market.
+- 28,538 included reports have no quantity-versus-label figure and 9,540 have no measured purity. Shares are always computed over the records that have the field.
+- Quantity deviation is measured against the printed label. A separate batch claim is not substituted.
+- A test record describes one vial on one date. It does not establish the safety, quality or suitability of a product, a batch or a vendor, and nothing here is medical advice.
+
+## Freshness
+
+Releases are cut monthly. `data/latest/` equals the newest directory under `data/releases/`, and `manifest.json` carries the projection identifier and the observed-through timestamp for this release. A release more than 45 days old is overdue; open an issue if you find one.
+
+## License and citation
+
+Data and analysis: [CC BY 4.0](LICENSE). Code: [MIT](LICENSE-CODE). Attribute as "TitrateLab, peptide-coa-analysis release 2026-10-12, https://github.com/titratelab/peptide-coa-analysis". A machine-readable citation is in `CITATION.cff` and GitHub's "Cite this repository" button.
+
+## Related
+
+- [TitrateLab data catalog](https://titratelab.com/data?src=github): the four evidence layers, kept separate on purpose.
+- [How to read a certificate of analysis](https://titratelab.com/research?src=github): the research library.

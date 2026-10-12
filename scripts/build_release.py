@@ -288,9 +288,12 @@ def _finish(fig, ax, theme, title, subtitle, note, left=0.30, bottom=0.14, top=0
 
 def _save(fig, name: str, mode: str, png: bool) -> None:
     CHARTS.mkdir(parents=True, exist_ok=True)
-    fig.savefig(CHARTS / f"{name}-{mode}.svg", format="svg", facecolor=fig.get_facecolor())
+    # No timestamps in the output: an unchanged release must render byte-identical files.
+    fig.savefig(CHARTS / f"{name}-{mode}.svg", format="svg", facecolor=fig.get_facecolor(),
+                metadata={"Date": None, "Creator": "titratelab/peptide-coa-analysis"})
     if png and mode == "light":
-        fig.savefig(CHARTS / f"{name}.png", format="png", dpi=200, facecolor=fig.get_facecolor())
+        fig.savefig(CHARTS / f"{name}.png", format="png", dpi=200, facecolor=fig.get_facecolor(),
+                    metadata={"Software": "titratelab/peptide-coa-analysis"})
 
 
 def chart_hbar(name, rows, label_key, value_key, title, subtitle, note, fmt="{:.1f}%", xmax=None):

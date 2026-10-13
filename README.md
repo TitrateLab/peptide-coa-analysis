@@ -51,6 +51,29 @@ Sources by category: community and buyer submissions 2,917; independent lab pane
 - **Is this a market sample?** No. Vials are tested and published by choice, so every page states what its figure cannot establish.
 - **Where is one specific report?** Not here. Per-record search with laboratory, client and batch as printed is at [titratelab.com/coa](https://titratelab.com/coa?src=github).
 
+## For researchers
+
+- **Load it.** Every table is a plain UTF-8 CSV with a header row.
+
+  ```python
+  import pandas as pd
+  url = "https://raw.githubusercontent.com/TitrateLab/peptide-coa-analysis/main/data/latest/"
+  compounds = pd.read_csv(url + "compounds.csv")
+  by_month  = pd.read_csv(url + "compound_month.csv")
+  ```
+
+  ```r
+  url <- "https://raw.githubusercontent.com/TitrateLab/peptide-coa-analysis/main/data/latest/"
+  compounds <- read.csv(paste0(url, "compounds.csv"))
+  ```
+
+- **Unit.** Rows are aggregates of published lab-report entries, never single reports. Entries and distinct certificate identifiers are both reported in the manifest with the key; see [methodology/deduplication.md](methodology/deduplication.md).
+- **Denominators.** Each share is computed over records that carry the field. `quantity_within_10pct_pct` is over `quantity_results`, not over `test_records`. Means and medians exclude zero-purity results, which are counted in `zero_identity_results`.
+- **Suppression.** Every cell holds at least 10 records. Omitted cells and folded laboratories are counted in the manifest, so totals can be reconciled.
+- **Sampling.** None. Treat the figures as describing the public evidence base, not the market.
+- **Fitness for use, biases, maintenance.** [DATASHEET.md](DATASHEET.md), structured after Gebru et al. (2021).
+- **Cite.** `CITATION.cff` or the "Cite this repository" button. Each release is a fixed version; cite the version you used.
+
 ## Files
 
 | Path | Contents |

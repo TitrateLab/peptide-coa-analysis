@@ -459,6 +459,7 @@ def render(v: dict[str, Any], out: Path = ROOT) -> list[Path]:
     targets = {
         "README.md.j2": out / "README.md",
         "CITATION.cff.j2": out / "CITATION.cff",
+        "zenodo.json.j2": out / ".zenodo.json",
     }
     for tpl in sorted((TEMPLATES / "analysis").glob("*.md.j2")):
         targets[f"analysis/{tpl.name}"] = out / "analysis" / tpl.name[:-3]
@@ -490,6 +491,8 @@ def main() -> int:
         print(f"charts rendered into {CHARTS}")
     for path in render(v):
         print(f"rendered {path.relative_to(ROOT)}")
+    # The Zenodo metadata must be valid JSON or the archive step silently falls back to defaults.
+    json.loads((ROOT / ".zenodo.json").read_text(encoding="utf-8"))
     return 0
 
 

@@ -1,36 +1,16 @@
 {
-  "title": "TitrateLab peptide COA analysis: vendor-blind aggregates of published lab reports",
+  "title": "TitrateLab peptide COA analysis: vendor-blind aggregates of 96,805 published lab reports (release 2026-10-12)",
   "upload_type": "dataset",
-  "creators": [
-    {
-      "name": "TitrateLab",
-      "affiliation": "TitrateLab"
-    }
-  ],
-  "description": "<p>Monthly, vendor-blind aggregates of published peptide certificates of analysis (COAs) by compound, laboratory and month: purity, quantity versus printed label, endotoxin testing and verifiability statistics, with a manifest carrying coverage and missing-data counts and the method behind every figure. No vendor, client, batch or certificate identity is included; every cell holds at least ten records. Per-record evidence with laboratory, client and batch as printed is searchable at <a href=\"https://titratelab.com/coa\">titratelab.com/coa</a>.</p>",
+  "version": "2026-10-12",
+  "publication_date": "2026-10-12",
+  "creators": [{"name": "TitrateLab", "affiliation": "TitrateLab"}],
+  "description": "<p><b>What this is.</b> Monthly, vendor-blind aggregates of published peptide certificates of analysis (COAs), the lab reports that vendors and buyers post publicly. Release 2026-10-12 covers 96,805 included reports across 68 canonical peptides and blends, 26 named laboratories and 44 calendar months (2022-07 to 2026-09), drawn from 116,363 published entries (115,076 distinct certificate identifiers, an upper bound).</p><p><b>Tables.</b> compounds.csv (one row per compound), compound_month.csv, labs.csv (one row per laboratory label, with a profile link where one exists), lab_month.csv and months.csv, plus manifest.json with coverage, missing-data counts, laboratory rules and SHA-256 hashes, and compounds.json mirroring the file served at titratelab.com/data. Columns are defined in schema/data-dictionary.md inside the archive.</p><p><b>Headline figures in this release.</b> 49.9% of 68,267 quantity results fall within 10% of the printed label; 12.9% of included reports carry an endotoxin result; 0.77% of purity results are reported at zero (compound not identified); 98.4% carry a laboratory verification URL.</p><p><b>Privacy boundary.</b> No vendor, manufacturer, client, submitter, batch or certificate identity appears in any file. Every cell holds at least 10 records; smaller cells are omitted and small laboratories fold into an 'Other labs' row so totals reconcile. Laboratories are named because they are the businesses that issue and publish the reports.</p><p><b>Limitations.</b> The corpus is not a random sample of the market: vials are tested and published by choice, and collection coverage differs by laboratory. Quantity deviation is measured against the printed label only. Extraction is imperfect; completeness is published per field in the manifest rather than assumed. Nothing here is medical advice or a statement about the safety of any product.</p><p><b>Method and provenance.</b> Built from TitrateLab's read-only projection of published lab reports (projection 20261012T021040Z, records observed through 2026-10-12T00:23:06Z). Collection, deduplication, canonical-name resolution and quality rules are documented in the methodology/ directory of the archive. Every number in the README and analyses is rendered from these files by scripts/build_release.py. Per-record evidence with laboratory, client and batch as printed is searchable at <a href=\"https://titratelab.com/coa\">titratelab.com/coa</a>.</p>",
   "access_right": "open",
   "license": "cc-by-4.0",
-  "keywords": [
-    "peptides",
-    "certificate of analysis",
-    "COA",
-    "HPLC purity",
-    "endotoxin",
-    "laboratory testing",
-    "open data",
-    "research peptides"
-  ],
+  "keywords": ["peptides", "certificate of analysis", "COA", "HPLC purity", "quantity versus label", "endotoxin", "laboratory testing", "research peptides", "open data", "2026-10-12"],
   "related_identifiers": [
-    {
-      "identifier": "https://titratelab.com/data",
-      "relation": "isSupplementTo",
-      "resource_type": "dataset"
-    },
-    {
-      "identifier": "https://github.com/TitrateLab/peptide-coa-analysis",
-      "relation": "isIdenticalTo",
-      "resource_type": "dataset"
-    }
+    {"identifier": "https://titratelab.com/data", "relation": "isSupplementTo", "resource_type": "dataset"},
+    {"identifier": "https://github.com/TitrateLab/peptide-coa-analysis/releases/tag/v2026-10-12", "relation": "isIdenticalTo", "resource_type": "dataset"}
   ],
   "language": "eng"
 }

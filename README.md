@@ -4,6 +4,43 @@
 
 The per-record evidence, with the laboratory, client and batch as printed on each public report, is searchable at [titratelab.com/coa](https://titratelab.com/coa?src=github). This repository holds what can be said about the corpus as a whole.
 
+## Scale
+
+| | |
+|---|---|
+| Published lab-report entries in the corpus | **116,363** |
+| Distinct certificate identifiers | 115,076 (upper bound; key in the manifest) |
+| Reports in these tables | 96,805 across 68 compounds and 26 named laboratories |
+| Time span | Jul 2022 to Sep 2026, with 79,217 reports in the last 12 full months |
+| Measurements inside | 86,594 purity results, 68,267 quantity-versus-label results, 12,516 endotoxin results, 95,221 laboratory verification links |
+
+For comparison, the other open peptide lab datasets measured on 2026-10-12 hold 233, 78 and 500 rows (table [below](#other-open-peptide-lab-datasets)).
+
+## What the data looks like
+
+Each underlying record is one laboratory report for one vial. The fields TitrateLab extracts from it, with illustrative values, and where each one lands in these files:
+
+| Field on the report | Illustrative value | In these files as |
+|---|---|---|
+| Laboratory | Janoshik | `lab` in `labs.csv` and `lab_month.csv` |
+| Compound as printed, then resolved | "Retatrutide 10mg" resolves to Retatrutide | `compound` |
+| Test date | 2026-08-14 | `month` |
+| Purity (chromatographic area) | 99.7% | `purity_results`, `median_purity_pct`, `zero_identity_results` |
+| Printed label versus tested quantity | 10 mg on the label, 9.4 mg found, deviation -6% | `quantity_results`, `quantity_within_10pct_pct`, `quantity_more_than_10pct_under_label` |
+| Endotoxin | below detection limit | `endotoxin_results` |
+| Verification link printed by the laboratory | present | `verifiable_records` |
+| Client, batch, certificate number | printed on the report, never released here | absent by design |
+
+The values above are illustrative, not a real record. The real per-record values, with laboratory, client and batch as printed, are searchable at [titratelab.com/coa](https://titratelab.com/coa?src=github).
+
+One real row from `compounds.csv` in this release:
+
+| compound | test_records | purity_results | median_purity_pct | quantity_results | quantity_within_10pct_pct | endotoxin_results | verifiable_records |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Retatrutide | 19,632 | 18,008 | 99.85 | 16,225 | 51.1% | 4,256 | 19,373 |
+
+Read it as: 19,632 published reports for Retatrutide. 18,008 of them carry a purity figure, with a median of 99.85%. 16,225 state a tested quantity against the label, and 51.1% of those fall within 10% of it. 4,256 include an endotoxin result. 19,373 carry the laboratory's verification link.
+
 ## What the data shows
 
 1. **Purity is rarely the problem. Quantity is.** Across the 35 compounds with at least 100 quantity results, the share of vials within 10% of the printed label runs from 22.2% (LL-37) to 90.1% (Glutathione). Overall, 49.9% of 68,267 quantity results are within 10% of label and 4,473 are more than 10% under it. [Analysis](analysis/01-quantity-vs-label.md)

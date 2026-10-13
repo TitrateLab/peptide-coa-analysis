@@ -10,6 +10,43 @@
 
 The per-record evidence, with the laboratory, client and batch as printed on each public report, is searchable at [titratelab.com/coa](https://titratelab.com/coa?src=github). This repository holds what can be said about the corpus as a whole.
 
+## Scale
+
+| | |
+|---|---|
+| Published lab-report entries in the corpus | **{{ totals.published_entries | comma }}** |
+| Distinct certificate identifiers | {{ totals.distinct_certificate_identifiers | comma }} (upper bound; key in the manifest) |
+| Reports in these tables | {{ included | comma }} across {{ cov.included_compounds }} compounds and {{ m.lab_dimension.published_labs }} named laboratories |
+| Time span | {{ months[0].month | monthlabel }} to {{ last_full | monthlabel }}, with {{ recent_total | comma }} reports in the last 12 full months |
+| Measurements inside | {{ purity_results | comma }} purity results, {{ quantity_results | comma }} quantity-versus-label results, {{ endotoxin_results | comma }} endotoxin results, {{ verifiable | comma }} laboratory verification links |
+
+For comparison, the other open peptide lab datasets measured on 2026-10-12 hold 233, 78 and 500 rows (table [below](#other-open-peptide-lab-datasets)).
+
+## What the data looks like
+
+Each underlying record is one laboratory report for one vial. The fields TitrateLab extracts from it, with illustrative values, and where each one lands in these files:
+
+| Field on the report | Illustrative value | In these files as |
+|---|---|---|
+| Laboratory | Janoshik | `lab` in `labs.csv` and `lab_month.csv` |
+| Compound as printed, then resolved | "Retatrutide 10mg" resolves to Retatrutide | `compound` |
+| Test date | 2026-08-14 | `month` |
+| Purity (chromatographic area) | 99.7% | `purity_results`, `median_purity_pct`, `zero_identity_results` |
+| Printed label versus tested quantity | 10 mg on the label, 9.4 mg found, deviation -6% | `quantity_results`, `quantity_within_10pct_pct`, `quantity_more_than_10pct_under_label` |
+| Endotoxin | below detection limit | `endotoxin_results` |
+| Verification link printed by the laboratory | present | `verifiable_records` |
+| Client, batch, certificate number | printed on the report, never released here | absent by design |
+
+The values above are illustrative, not a real record. The real per-record values, with laboratory, client and batch as printed, are searchable at [titratelab.com/coa](https://titratelab.com/coa?src=github).
+
+One real row from `compounds.csv` in this release:
+
+| compound | test_records | purity_results | median_purity_pct | quantity_results | quantity_within_10pct_pct | endotoxin_results | verifiable_records |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| {{ top_compounds[0].compound }} | {{ top_compounds[0].test_records | comma }} | {{ top_compounds[0].purity_results | comma }} | {{ top_compounds[0].median_purity_pct | num2 }} | {{ top_compounds[0].quantity_results | comma }} | {{ top_compounds[0].quantity_within_10pct_pct | pct1 }} | {{ top_compounds[0].endotoxin_results | comma }} | {{ top_compounds[0].verifiable_records | comma }} |
+
+Read it as: {{ top_compounds[0].test_records | comma }} published reports for {{ top_compounds[0].compound }}. {{ top_compounds[0].purity_results | comma }} of them carry a purity figure, with a median of {{ top_compounds[0].median_purity_pct | num2 }}%. {{ top_compounds[0].quantity_results | comma }} state a tested quantity against the label, and {{ top_compounds[0].quantity_within_10pct_pct | pct1 }} of those fall within 10% of it. {{ top_compounds[0].endotoxin_results | comma }} include an endotoxin result. {{ top_compounds[0].verifiable_records | comma }} carry the laboratory's verification link.
+
 ## What the data shows
 
 1. **Purity is rarely the problem. Quantity is.** Across the {{ q_rows | length }} compounds with at least 100 quantity results, the share of vials within 10% of the printed label runs from {{ q_worst.quantity_within_10pct_pct | pct1 }} ({{ q_worst.compound }}) to {{ q_best.quantity_within_10pct_pct | pct1 }} ({{ q_best.compound }}). Overall, {{ within_share | pct1 }} of {{ quantity_results | comma }} quantity results are within 10% of label and {{ under_label_total | comma }} are more than 10% under it. [Analysis](analysis/01-quantity-vs-label.md)

@@ -1,0 +1,36 @@
+{
+  "title": "TitrateLab peptide COA analysis: vendor-blind aggregates of published lab reports",
+  "upload_type": "dataset",
+  "creators": [
+    {
+      "name": "TitrateLab",
+      "affiliation": "TitrateLab"
+    }
+  ],
+  "description": "<p>Monthly, vendor-blind aggregates of published peptide certificates of analysis (COAs) by compound, laboratory and month: purity, quantity versus printed label, endotoxin testing and verifiability statistics, with a manifest carrying coverage and missing-data counts and the method behind every figure. No vendor, client, batch or certificate identity is included; every cell holds at least ten records. Per-record evidence with laboratory, client and batch as printed is searchable at <a href=\"https://titratelab.com/coa\">titratelab.com/coa</a>.</p>",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "keywords": [
+    "peptides",
+    "certificate of analysis",
+    "COA",
+    "HPLC purity",
+    "endotoxin",
+    "laboratory testing",
+    "open data",
+    "research peptides"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://titratelab.com/data",
+      "relation": "isSupplementTo",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://github.com/TitrateLab/peptide-coa-analysis",
+      "relation": "isIdenticalTo",
+      "resource_type": "dataset"
+    }
+  ],
+  "language": "eng"
+}

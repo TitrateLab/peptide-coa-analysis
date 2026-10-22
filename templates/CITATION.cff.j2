@@ -6,6 +6,9 @@ authors:
   - name: "TitrateLab"
     website: "https://titratelab.com"
 version: "{{ m.version }}"
+{% if release_doi %}
+doi: "{{ release_doi }}"
+{% endif %}
 date-released: "{{ generated_date }}"
 url: "https://github.com/titratelab/peptide-coa-analysis"
 repository-code: "https://github.com/titratelab/peptide-coa-analysis"

@@ -6,6 +6,7 @@ authors:
   - name: "TitrateLab"
     website: "https://titratelab.com"
 version: "2026-10-12"
+doi: "10.5281/zenodo.23551719"
 date-released: "2026-10-12"
 url: "https://github.com/titratelab/peptide-coa-analysis"
 repository-code: "https://github.com/titratelab/peptide-coa-analysis"

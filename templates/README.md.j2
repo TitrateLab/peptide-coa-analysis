@@ -176,7 +176,23 @@ Releases are cut monthly. `data/latest/` equals the newest directory under `data
 
 ## License and citation
 
-Data and analysis: [CC BY 4.0](LICENSE). Code: [MIT](LICENSE-CODE). Attribute as "TitrateLab, peptide-coa-analysis release {{ m.version }}, https://github.com/titratelab/peptide-coa-analysis". A machine-readable citation is in `CITATION.cff` and GitHub's "Cite this repository" button.
+Data and analysis: [CC BY 4.0](LICENSE). Code: [MIT](LICENSE-CODE). Use the fixed release you analyzed, rather than citing `data/latest/`, which changes with future releases.
+
+{% if release_doi %}
+Suggested dataset citation:
+
+> TitrateLab. ({{ generated_date[:4] }}). *TitrateLab peptide COA analysis: vendor-blind aggregates of published lab reports* (Version {{ m.version }}) [Data set]. Zenodo. https://doi.org/{{ release_doi }}
+
+The [archived dataset](https://doi.org/{{ release_doi }}) preserves this release. The DOI is also in [CITATION.cff](CITATION.cff), used by GitHub's "Cite this repository" button.
+{% else %}
+Suggested dataset citation: TitrateLab, *Peptide COA analysis*, release {{ m.version }}. [Fixed source release](https://github.com/TitrateLab/peptide-coa-analysis/releases/tag/v{{ m.version }}). Machine-readable metadata is in [CITATION.cff](CITATION.cff).
+{% endif %}
+
+When reusing a table, chart or calculation, name TitrateLab, identify release {{ m.version }}, link the source and [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/), and state what you changed. Include the metric's denominator and exclusions alongside the result. Published report entries are not unique batches or a representative market sample; an absent measurement is not a zero or a passing result.
+
+For example, a chart caption can say: "Source: TitrateLab, peptide COA analysis, release {{ m.version }}{% if release_doi %}, DOI: {{ release_doi }}{% endif %} (CC BY 4.0). Endotoxin-result coverage counts reports carrying any endotoxin result, including below-detection outcomes, out of included report entries. It does not measure safety or market-wide testing prevalence. Chart adapted by [your name]."
+
+See the [dataset catalog and release context](https://titratelab.com/data), [measurement methodology](https://titratelab.com/methodology), and [column definitions](schema/data-dictionary.md) before interpreting a result.
 
 ## Related
 

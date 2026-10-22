@@ -36,6 +36,9 @@ FORBIDDEN_COLUMNS = {
 RELEASE_TABLES = ("compounds", "compound_month", "labs", "lab_month", "months")
 OTHER_LAB_LABEL = "Other labs"
 
+# Version-specific archive identifiers; never carry an old DOI into a new release.
+RELEASE_DOIS = {"2026-10-12": "10.5281/zenodo.23551719"}
+
 THEMES = {
     "light": {
         "surface": "#fcfcfb", "text": "#0b0b0b", "text2": "#52514e", "muted": "#8a8984",
@@ -231,6 +234,7 @@ def build_view(d: dict[str, Any]) -> dict[str, Any]:
     return {
         "m": m, "cov": cov, "miss": miss, "totals": totals,
         "generated_date": m["generated_at"][:10],
+        "release_doi": RELEASE_DOIS.get(m["version"]),
         "compounds": compounds, "top_compounds": compounds[:15],
         "included": included, "purity_results": purity_results, "zero_results": zero_results,
         "quantity_results": quantity_results, "endotoxin_results": endotoxin_results,

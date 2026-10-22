@@ -173,7 +173,19 @@ Releases are cut monthly. `data/latest/` equals the newest directory under `data
 
 ## License and citation
 
-Data and analysis: [CC BY 4.0](LICENSE). Code: [MIT](LICENSE-CODE). Attribute as "TitrateLab, peptide-coa-analysis release 2026-10-12, https://github.com/titratelab/peptide-coa-analysis". A machine-readable citation is in `CITATION.cff` and GitHub's "Cite this repository" button.
+Data and analysis: [CC BY 4.0](LICENSE). Code: [MIT](LICENSE-CODE). Use the fixed release you analyzed, rather than citing `data/latest/`, which changes with future releases.
+
+Suggested dataset citation:
+
+> TitrateLab. (2026). *TitrateLab peptide COA analysis: vendor-blind aggregates of published lab reports* (Version 2026-10-12) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23551719
+
+The [archived dataset](https://doi.org/10.5281/zenodo.23551719) preserves this release. The DOI is also in [CITATION.cff](CITATION.cff), used by GitHub's "Cite this repository" button.
+
+When reusing a table, chart or calculation, name TitrateLab, identify release 2026-10-12, link the source and [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/), and state what you changed. Include the metric's denominator and exclusions alongside the result. Published report entries are not unique batches or a representative market sample; an absent measurement is not a zero or a passing result.
+
+For example, a chart caption can say: "Source: TitrateLab, peptide COA analysis, release 2026-10-12, DOI: 10.5281/zenodo.23551719 (CC BY 4.0). Endotoxin-result coverage counts reports carrying any endotoxin result, including below-detection outcomes, out of included report entries. It does not measure safety or market-wide testing prevalence. Chart adapted by [your name]."
+
+See the [dataset catalog and release context](https://titratelab.com/data), [measurement methodology](https://titratelab.com/methodology), and [column definitions](schema/data-dictionary.md) before interpreting a result.
 
 ## Related
 

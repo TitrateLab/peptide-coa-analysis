@@ -114,6 +114,19 @@ Sources by category: {% for name, n in cov.source_categories.items() %}{{ name |
 - **Fitness for use, biases, maintenance.** [DATASHEET.md](DATASHEET.md), structured after Gebru et al. (2021).
 - **Cite.** `CITATION.cff` or the "Cite this repository" button. Each release is a fixed version; cite the version you used.
 
+## Reproduce measurement coverage
+
+Open [Peptide COA coverage: what is missing?](notebooks/peptide-coa-coverage-missingness.ipynb) to reproduce field availability, reconcile missing counts against the manifest, and explore a compound with its own denominator. The notebook uses the fixed **2026-10-12** release and verifies its CSV checksum. It distinguishes positive-purity results from zero-purity/unidentified-target entries and exports a chart and coverage table.
+
+From a clone of this repository:
+
+```bash
+python -m pip install -r requirements.txt pandas jupyterlab
+python -m jupyterlab notebooks/peptide-coa-coverage-missingness.ipynb
+```
+
+Choose **Run All**. The notebook finds `data/releases/2026-10-12/` from the repository root or `notebooks/`; for a separate extracted archive, set `TITRATELAB_DATA_DIR` to its directory. Dependencies require installation once; the analysis then runs offline. Missing measurements are not failed tests, and coverage does not estimate market prevalence.
+
 ## Files
 
 | Path | Contents |

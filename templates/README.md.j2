@@ -181,7 +181,7 @@ Data and analysis: [CC BY 4.0](LICENSE). Code: [MIT](LICENSE-CODE). Use the fixe
 {% if release_doi %}
 Suggested dataset citation:
 
-> TitrateLab. ({{ generated_date[:4] }}). *TitrateLab peptide COA analysis: vendor-blind aggregates of published lab reports* (Version {{ m.version }}) [Data set]. Zenodo. https://doi.org/{{ release_doi }}
+> TitrateLab. ({{ generated_date[:4] }}). *TitrateLab peptide COA analysis: vendor-blind aggregates of {{ included | comma }} published lab reports (release {{ m.version }})* (Version {{ m.version }}) [Data set]. Zenodo. https://doi.org/{{ release_doi }}
 
 The [archived dataset](https://doi.org/{{ release_doi }}) preserves this release. The DOI is also in [CITATION.cff](CITATION.cff), used by GitHub's "Cite this repository" button.
 {% else %}

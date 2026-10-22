@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this data or analysis, cite it as below and link the release version."
 type: dataset
-title: "TitrateLab peptide COA analysis: vendor-blind aggregates of published lab reports"
+title: "TitrateLab peptide COA analysis: vendor-blind aggregates of 96,805 published lab reports (release 2026-10-12)"
 authors:
   - name: "TitrateLab"
     website: "https://titratelab.com"

@@ -177,7 +177,7 @@ Data and analysis: [CC BY 4.0](LICENSE). Code: [MIT](LICENSE-CODE). Use the fixe
 
 Suggested dataset citation:
 
-> TitrateLab. (2026). *TitrateLab peptide COA analysis: vendor-blind aggregates of published lab reports* (Version 2026-10-12) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23551719
+> TitrateLab. (2026). *TitrateLab peptide COA analysis: vendor-blind aggregates of 96,805 published lab reports (release 2026-10-12)* (Version 2026-10-12) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23551719
 
 The [archived dataset](https://doi.org/10.5281/zenodo.23551719) preserves this release. The DOI is also in [CITATION.cff](CITATION.cff), used by GitHub's "Cite this repository" button.
 
